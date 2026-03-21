@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+
+const categoryMap = new Map<string, number>();
+for (const post of allPosts) {
+  const cat = post.data.category;
+  categoryMap.set(cat, (categoryMap.get(cat) || 0) + 1);
+}
+
+const categories = [...categoryMap.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+
+function formatCategory(slug: string): string {
+  return slug.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+}
+
+const currentPath = Astro.url.pathname;
+---
+<aside class="sidebar">
+  <ul class="sidebar-links">
+    <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
+    <li><a href="/about/" class={currentPath.startsWith('/about') ? 'active' : ''}>About</a></li>
+  </ul>
+  <hr class="sidebar-divider" />
+  <nav>
+    <ul>
+      {categories.map(([slug, count]) => (
+        <li>
+          <a
+            href={`/${slug}/`}
+            class={currentPath.startsWith(`/${slug}`) ? 'active' : ''}
+          >
+            {formatCategory(slug)}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</aside>
