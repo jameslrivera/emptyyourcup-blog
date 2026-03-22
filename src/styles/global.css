@@ -40,7 +40,7 @@ a:hover {
 .site-header {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2.5rem 2rem 1rem;
+  padding: 2.5rem 0 1rem 0;
 }
 
 .site-title {
@@ -64,7 +64,7 @@ a:hover {
   gap: 3rem;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1rem 2rem 4rem;
+  padding: 1rem 0 4rem 0;
   align-items: start;
 }
 
@@ -86,6 +86,7 @@ a:hover {
 .sidebar-links a {
   font-family: var(--font-heading);
   font-size: 0.95rem;
+  font-weight: 700;
   color: var(--color-accent);
 }
 
@@ -122,6 +123,7 @@ a:hover {
 .sidebar nav a {
   font-family: var(--font-heading);
   font-size: 0.95rem;
+  font-weight: 700;
   color: var(--color-accent);
 }
 
