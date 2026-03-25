@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft && data.category === 'quotes');
+const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base title="Quotes">
+  <a href="/" class="back-link">&larr; Home</a>
+  <h1 class="page-title">Quotes</h1>
+  <ul class="quotes-list">
+    {posts.map((post) => (
+      <li class="quote-item">{post.data.description}</li>
+    ))}
+  </ul>
+</Base>
