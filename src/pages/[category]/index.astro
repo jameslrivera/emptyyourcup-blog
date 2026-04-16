@@ -3,12 +3,22 @@ import Base from '../../layouts/Base.astro';
 import PostCard from '../../components/PostCard.astro';
 import { getCollection } from 'astro:content';
 
+const CATEGORIES = [
+  { slug: 'on-leadership', name: 'On Leadership' },
+  { slug: 'on-war', name: 'On War' },
+  { slug: 'on-dealing-with-people', name: 'On Dealing With People' },
+  { slug: 'thoughts', name: 'Thoughts' },
+];
+
 export async function getStaticPaths() {
   const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 
   const categoryMap = new Map<string, typeof allPosts>();
+  const hardcoded = ['on-leadership', 'on-war', 'on-dealing-with-people', 'thoughts'];
+  for (const cat of hardcoded) categoryMap.set(cat, []);
   for (const post of allPosts) {
     const cat = post.data.category;
+    if (cat === 'quotes') continue;
     if (!categoryMap.has(cat)) categoryMap.set(cat, []);
     categoryMap.get(cat)!.push(post);
   }
@@ -24,25 +34,26 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 const { posts } = Astro.props;
 
-function formatCategory(slug: string): string {
-  return slug.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
-}
+const categoryData = CATEGORIES.find(c => c.slug === category);
+const title = categoryData?.name ?? category!;
 
 function getSlug(id: string): string {
   return id.split('/').pop()!;
 }
-
-const title = formatCategory(category!);
 ---
 <Base title={title}>
   <a href="/" class="back-link">&larr; Home</a>
   <h1 class="page-title">{title}</h1>
-  {posts.map((post) => (
-    <PostCard
-      title={post.data.title}
-      description={post.data.description}
-      date={post.data.date}
-      href={`/${post.data.category}/${getSlug(post.id)}/`}
-    />
-  ))}
+  {posts.length === 0 ? (
+    <p class="empty-category">Coming soon.</p>
+  ) : (
+    posts.map((post) => (
+      <PostCard
+        title={post.data.title}
+        description={post.data.description}
+        date={post.data.date}
+        href={`/${post.data.category}/${getSlug(post.id)}/`}
+      />
+    ))
+  )}
 </Base>

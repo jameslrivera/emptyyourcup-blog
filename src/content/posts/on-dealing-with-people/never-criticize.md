@@ -1,7 +1,7 @@
 ---
 title: "Never Criticize"
 description: "The moment you criticize, you stop being helpful and start being a critic."
-category: "when-in-dealing-with-people"
+category: "on-dealing-with-people"
 date: 2026-03-21
 ---
 

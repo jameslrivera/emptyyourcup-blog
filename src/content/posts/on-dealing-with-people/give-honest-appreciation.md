@@ -1,7 +1,7 @@
 ---
 title: "Give Honest and Sincere Appreciation"
 description: "People will move mountains for someone who genuinely appreciates them."
-category: "when-in-dealing-with-people"
+category: "on-dealing-with-people"
 date: 2026-03-08
 ---
 

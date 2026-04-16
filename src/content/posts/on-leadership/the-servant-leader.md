@@ -1,7 +1,7 @@
 ---
 title: "The Servant Leader"
 description: "What I learned about leading by serving others first."
-category: "leadership"
+category: "on-leadership"
 date: 2026-03-15
 ---
 

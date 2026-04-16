@@ -1,7 +1,7 @@
 ---
 title: "Listen More Than You Speak"
 description: "The simplest way to connect with someone is to actually hear them."
-category: "when-in-dealing-with-people"
+category: "on-dealing-with-people"
 date: 2026-03-12
 ---
 

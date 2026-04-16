@@ -1,7 +1,7 @@
 ---
 title: "Rule One: Lead by Example"
 description: "A good leader leads by example."
-category: "leadership"
+category: "on-leadership"
 date: 2026-03-10
 ---
 
