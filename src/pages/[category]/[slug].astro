@@ -25,7 +25,6 @@ const formatted = post.data.date.toLocaleDateString('en-US', {
 ---
 <Base title={post.data.title} description={post.data.description}>
   <article class="prose">
-    <a href={`/${post.data.category}/`} class="back-link">&larr; {post.data.category.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')}</a>
     <h1>{post.data.title}</h1>
     <span class="post-date">{formatted}</span>
     <hr />

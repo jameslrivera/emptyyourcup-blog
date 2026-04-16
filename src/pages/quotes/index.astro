@@ -6,7 +6,6 @@ const allPosts = await getCollection('posts', ({ data }) => !data.draft && data.
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <Base title="Quotes">
-  <a href="/" class="back-link">&larr; Home</a>
   <h1 class="page-title">Quotes</h1>
   <ul class="quotes-list">
     {posts.map((post) => (
