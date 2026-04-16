@@ -212,6 +212,7 @@ a:hover {
 /* Post card (listing) */
 .post-card {
   margin-bottom: 2.25rem;
+  margin-left: 4rem;
 }
 
 .post-card a {
@@ -355,5 +356,9 @@ a:hover {
 
   .sidebar nav li {
     margin-bottom: 0;
+  }
+
+  .post-card {
+    margin-left: 0;
   }
 }
